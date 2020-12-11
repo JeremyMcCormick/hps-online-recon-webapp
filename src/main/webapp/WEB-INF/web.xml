@@ -3,22 +3,22 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
-    
+
     <session-config>
         <session-timeout>9999</session-timeout>
-    </session-config>    
-    
+    </session-config>
+
     <!-- plot servlet -->
     <servlet>
         <servlet-name>showplots</servlet-name>
-        <servlet-class>org.hps.webapps.dataquality.ShowPlotsServlet</servlet-class>
+        <servlet-class>org.hps.webapps.remoteaida.ShowPlotsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>showplots</servlet-name>
         <url-pattern>/show_plots</url-pattern>
     </servlet-mapping>
-                   
+
     <!-- plot servlet -->
     <servlet>
         <servlet-name>aidaplot</servlet-name>
@@ -30,18 +30,18 @@
         <servlet-name>aidaplot</servlet-name>
         <url-pattern>/aida_plot.jsp</url-pattern>
     </servlet-mapping>
-    
+
     <!-- icon servlet -->
     <servlet>
         <servlet-name>fhicon</servlet-name>
         <servlet-class>org.freehep.webutil.tree.IconServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>fhicon</servlet-name>
         <url-pattern>/icon.jsp</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
 
-</web-app>         
-         
+</web-app>
+

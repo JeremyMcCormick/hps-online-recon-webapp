@@ -6,8 +6,8 @@
 
 <html>
 <body>
-    <h3>
-        <b>File:</b> <c:out value="${file}"/>
+    <h3>Remote AIDA Server: <c:out value="${treeBindName}"/><br/>
+        Options: <c:out value="${aidaOptions}"/>
     </h3>
     <iframe src="tree_page.jsp" name="treeFrame" height="100%" width="30%"></iframe>
     <iframe src="plot_page.jsp" name="plotFrame" height="100%" width="68%"></iframe>

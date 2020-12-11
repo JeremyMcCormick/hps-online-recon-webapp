@@ -7,22 +7,22 @@
 
 <html>
 <head>
-<title>AIDA Plots - <c:out value="${file}" /></title>
+<title>AIDA Plots - <c:out value="${treeBindName}" /></title>
 <base target="plotFrame">
 </head>
 
 <body>
 
-    <aida:tree storeName="${file}" storeType="${storeType}" />
+    <aida:tree storeName="${treeBindName}" storeType="${storeType}" options="${aidaOptions}"/>
 
-    <c:if test="${empty file}">
-        <h3>file not set</h3>
+    <c:if test="${empty treeBindName}">
+        <h3>treeBindName not set</h3>
     </c:if>
 
-    <c:if test="${!empty file}">
+    <c:if test="${!empty treeBindName}">
         <aida:displaytree leafHref="plot_page.jsp?plotHref=%p" folderHref="plot_page.jsp?plotHref=%p" rootLabel="/"
             rootVisible="false" showItemCount="true" showFolderHrefForNodesWithLeavesOnly="true"
-            storeName="${file}" />
+            storeName="${treeBindName}" />
     </c:if>
 
 </body>
