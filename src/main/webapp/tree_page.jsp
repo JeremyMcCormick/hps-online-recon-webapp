@@ -7,22 +7,22 @@
 
 <html>
 <head>
-<title>AIDA Plots - <c:out value="${treeBindName}" /></title>
+<title>AIDA Plots - <c:out value="${storeName}" /></title>
 <base target="plotFrame">
 </head>
 
 <body>
 
-    <aida:tree storeName="${treeBindName}" storeType="${storeType}" options="${aidaOptions}"/>
+    <%-- <aida:tree storeName="${storeName}" storeType="${storeType}" options="${options}"/> --%>
 
-    <c:if test="${empty treeBindName}">
-        <h3>treeBindName not set</h3>
+    <c:if test="${empty storeName}">
+        <h3>storeName not set</h3>
     </c:if>
 
-    <c:if test="${!empty treeBindName}">
+    <c:if test="${!empty storeName}">
         <aida:displaytree leafHref="plot_page.jsp?plotHref=%p" folderHref="plot_page.jsp?plotHref=%p" rootLabel="/"
-            rootVisible="false" showItemCount="true" showFolderHrefForNodesWithLeavesOnly="true"
-            storeName="${treeBindName}" />
+            rootVisible="true" showItemCount="true" showFolderHrefForNodesWithLeavesOnly="true"
+            storeName="${storeName}" />
     </c:if>
 
 </body>

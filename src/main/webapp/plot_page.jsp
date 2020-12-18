@@ -25,7 +25,7 @@
         <!--
             Get remote AIDA tree
         -->
-        <aida:tree storeName="${treeBindName}" storeType="${storeType}" options="${aidaOptions}"/>
+        <%-- <aida:tree storeName="${storeName}" storeType="${storeType}" options="${options}"/>  --%>
 
         <c:if test="${!empty param.plotHref}">
             <c:set var="aidaPath" value="${param.plotHref}" scope="session" />
@@ -33,7 +33,7 @@
         <c:set var="ref" value="plot_page.jsp?plotHref=${aidaPath}" />
 
         <!-- Get data from the AIDA Tree and put into "aidaObjects" variable -->
-        <aida:objects storeName="${treeBindName}" path="${aidaPath}" var="aidaObjects">
+        <aida:objects storeName="${storeName}" path="${aidaPath}" var="aidaObjects">
         </aida:objects>
 
         <c:set value="${fn:contains(aidaObjects[0], 'Histogram2D')}" var="isHistogram2D"/>

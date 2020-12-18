@@ -43,5 +43,15 @@
         <url-pattern>/icon.jsp</url-pattern>
     </servlet-mapping>
 
+<!--
+    <listener>
+        <listener-class>hep.aida.web.taglib.util.TreeCache</listener-class>
+    </listener>
+ -->
+
+    <listener>
+        <listener-class>org.hps.webapps.remoteaida.TreeSetup</listener-class>
+    </listener>
+
 </web-app>
 
