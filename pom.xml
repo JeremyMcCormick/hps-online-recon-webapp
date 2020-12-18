@@ -37,7 +37,7 @@
             <groupId>org.freehep</groupId>
             <artifactId>freehep-aidatld</artifactId>
             <version>1.4.4-SNAPSHOT</version>
-        </dependency>             
+        </dependency>
         <dependency>
             <groupId>org.freehep</groupId>
             <artifactId>freehep-jaida-xml</artifactId>
@@ -52,7 +52,7 @@
             <groupId>org.freehep</groupId>
             <artifactId>jas-plotter</artifactId>
             <version>2.2.3</version>
-        </dependency>                
+        </dependency>
         <dependency>
             <groupId>org.freehep</groupId>
             <artifactId>vectorgraphics</artifactId>
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
-            <version>1.1.2</version>            
+            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -110,11 +110,12 @@
             <artifactId>jsp-api</artifactId>
             <version>2.0</version>
             <scope>provided</scope>
-        </dependency>                
-	<dependency>
-	    <groupId>org.freehep</groupId>
-	    <artifactId>freehep-jaida-remote</artifactId>
-            <version>3.4.13</version>
+        </dependency>
+        <dependency>
+	        <groupId>org.freehep</groupId>
+	        <artifactId>freehep-jaida-remote</artifactId>
+            <!-- <version>3.4.13</version>  -->
+            <version>3.4.14-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
@@ -128,7 +129,9 @@
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
                     <server>local-tomcat-server</server>
-                    <path>/data-quality</path>
+                    <path>/remote-aida-web</path>
+                    <username>admin</username>
+                    <password>admin</password>
                 </configuration>
             </plugin>
         </plugins>
