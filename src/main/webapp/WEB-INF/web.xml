@@ -8,6 +8,11 @@
         <session-timeout>9999</session-timeout>
     </session-config>
 
+    <context-param>
+        <param-name>hps.online.recon.connection</param-name>
+        <param-value>//localhost:3001/HPSRecon</param-value>
+    </context-param>
+
     <!-- plot servlet -->
     <servlet>
         <servlet-name>showplots</servlet-name>
@@ -43,12 +48,7 @@
         <url-pattern>/icon.jsp</url-pattern>
     </servlet-mapping>
 
-<!--
-    <listener>
-        <listener-class>hep.aida.web.taglib.util.TreeCache</listener-class>
-    </listener>
- -->
-
+    <!-- AIDA tree cache -->
     <listener>
         <listener-class>org.hps.webapps.remoteaida.TreeSetup</listener-class>
     </listener>

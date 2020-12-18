@@ -13,7 +13,7 @@
 
 <body>
 
-    <%-- <aida:tree storeName="${storeName}" storeType="${storeType}" options="${options}"/> --%>
+    <aida:tree storeName="${storeName}" storeType="${storeType}" options="${options}"/>
 
     <c:if test="${empty storeName}">
         <h3>storeName not set</h3>

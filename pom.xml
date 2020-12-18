@@ -120,7 +120,8 @@
     </dependencies>
     <build>
         <defaultGoal>war:war tomcat7:redeploy</defaultGoal>
-        <finalName>remote-aida-web</finalName>
+        <finalName>HPSRecon</finalName>
+        <!--
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -135,5 +136,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        -->
     </build>
 </project>

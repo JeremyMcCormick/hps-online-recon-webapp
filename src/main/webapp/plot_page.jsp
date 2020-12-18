@@ -25,7 +25,7 @@
         <!--
             Get remote AIDA tree
         -->
-        <%-- <aida:tree storeName="${storeName}" storeType="${storeType}" options="${options}"/>  --%>
+        <aida:tree storeName="${storeName}" storeType="${storeType}" options="${options}"/>
 
         <c:if test="${!empty param.plotHref}">
             <c:set var="aidaPath" value="${param.plotHref}" scope="session" />
