@@ -16,7 +16,7 @@
     <!-- plot servlet -->
     <servlet>
         <servlet-name>showplots</servlet-name>
-        <servlet-class>org.hps.webapps.remoteaida.ShowPlotsServlet</servlet-class>
+        <servlet-class>org.hps.online.recon.webapp.ShowPlotsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -50,7 +50,7 @@
 
     <!-- AIDA tree cache -->
     <listener>
-        <listener-class>org.hps.webapps.remoteaida.TreeSetup</listener-class>
+        <listener-class>org.hps.online.recon.webapp.TreeSetup</listener-class>
     </listener>
 
 </web-app>
