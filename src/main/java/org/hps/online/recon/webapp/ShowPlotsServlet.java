@@ -24,12 +24,14 @@ public class ShowPlotsServlet extends HttpServlet {
 
     private static Logger LOG = Logger.getLogger(ShowPlotsServlet.class.getPackage().getName());
     static {
-        LOG.setLevel(Level.ALL);
+        LOG.setLevel(Level.INFO);
     }
 
+    /*
     static {
         Logger.getLogger("hep.aida.ref.remote").setLevel(Level.ALL);
     }
+    */
 
     private static final String AIDA_OPTIONS_PARAMETER = "options";
     private static final String STORE_TYPE_PARAMETER = "storeType";
@@ -43,6 +45,7 @@ public class ShowPlotsServlet extends HttpServlet {
         ExportFileType.setClassLoader(ShowPlotsServlet.class.getClassLoader());
         List<ExportFileType> types = ExportFileType.getExportFileTypes();
         for (ExportFileType eft : types) {
+            // TODO: skip gif as it is broken in the webapp
             Class klass = eft.getClass();
         }
     }
@@ -59,6 +62,7 @@ public class ShowPlotsServlet extends HttpServlet {
         ses.setAttribute(STORE_NAME_PARAMETER, treeBindName);
         ses.setAttribute(STORE_TYPE_PARAMETER, RmiStoreFactory.storeType);
 
+        // TODO: Just hard-code duplex and hurry settings into options
         boolean duplex = DUPLEX_DEFAULT;
         boolean hurry = HURRY_DEFAULT;
         String options = "duplex=\""+duplex+"\",RmiServerName=\"rmi:"+treeBindName+"\",hurry=\""+hurry+"\"";
