@@ -66,15 +66,18 @@
             <!-- plotter style -->
             <aida:style>
                 <aida:attribute name="hist2DStyle" value="colorMap"/>
+                <aida:style type="zAxis">
+                    <aida:attribute name="scale" value="log"/>
+                </aida:style>
                 <aida:style type="statisticsBox">
-                <aida:attribute name="isVisible" value="${!isHistogram2D && fn:length(aidaObjects) == 1}"/>
+                    <aida:attribute name="isVisible" value="${!isHistogram2D && fn:length(aidaObjects) == 1}"/>
                 </aida:style>
                 <aida:style type="legendBox">
                     <aida:attribute name="isVisible" value="false"/>
                 </aida:style>
                 <aida:style type="data">
                     <aida:style type="errorBar">
-                        <aida:attribute name="isVisible" value="true"/>
+                        <aida:attribute name="isVisible" value="false"/>
                     </aida:style>
                     <aida:style type="fill">
                         <aida:attribute name="color" value="blue"/>
