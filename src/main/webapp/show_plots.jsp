@@ -10,6 +10,7 @@ ws.onmessage = function(event) {
     try {
     	plotFrame = document.getElementById('plotFrame').contentWindow;
     	if (plotFrame.document.getElementsByTagName('img').length >= 1) {
+    		console.log(event.data);
     		plotFrame.location.reload(true);
     	}
     } catch (e) {
