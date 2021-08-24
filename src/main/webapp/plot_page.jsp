@@ -37,9 +37,13 @@
         </aida:objects>
 
         <c:set value="${fn:contains(aidaObjects[0], 'Histogram2D')}" var="isHistogram2D"/>
+        <c:set value="${fn:contains(aidaObjects[0], 'DataPointSet')}" var="isDataPointSet"/>
+
+        <!--
         <h3>
             <b>Path:</b> ${aidaPath}<br/>
         </h3>
+         -->
 
         <!-- Create clickable Image Map for multiple data only (optional) -->
         <c:set var="imgMap" value="false" />
@@ -92,6 +96,22 @@
                         <aida:attribute name="size" value="1"/>
                         <aida:attribute name="color" value="blue"/>
                     </aida:style>
+                    <c:if test="${isDataPointSet == true}">
+                        <aida:style type="outline">
+                            <aida:attribute name="color" value="black"/>
+                            <aida:attribute name="visible" value="true"/>
+                            <aida:attribute name="lineType" value="solid"/>
+                            <aida:attribute name="thickness" value="1"/>
+                        </aida:style>
+                        <aida:style type="marker">
+                            <aida:attribute name="color" value="blue"/>
+                            <aida:attribute name="size" value="5"/>
+                            <aida:attribute name="shape" value="diamond"/>
+                        </aida:style>
+                        <aida:style type="errorBar">
+                            <aida:attribute name="visible" value="false"/>
+                        </aida:style>
+                    </c:if>
                 </aida:style>
                 <c:if test="${fn:length(aidaObjects) == 1}">
                     <aida:style type="title">
@@ -100,6 +120,7 @@
                         </aida:style>
                     </aida:style>
                 </c:if>
+
             </aida:style>
 
             <aida:region href="${ref}/${aida:objectName(aidaObjects[status.index])}">
