@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,9 +69,9 @@ public class ShowPlotsServlet extends HttpServlet {
         boolean hurry = HURRY_DEFAULT;
         String options = "duplex=\""+duplex+"\",RmiServerName=\"rmi:"+treeBindName+"\",hurry=\""+hurry+"\"";
         ses.setAttribute(AIDA_OPTIONS_PARAMETER, options);
-        LOG.info("Options: " + options);
 
-        final RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/show_plots.jsp");
-        dispatcher.forward(request, response);
+        ses.setAttribute("notifier", getServletContext().getInitParameter("hps.online.recon.notifier"));
+
+        request.getRequestDispatcher("/show_plots.jsp").forward(request, response);
     }
 }

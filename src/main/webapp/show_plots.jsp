@@ -1,14 +1,23 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
-<%--
-<%@taglib prefix="aida" uri="http://aida.freehep.org/jsp20"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
---%>
-
 <html>
+<head>
+</head>
+<script>
+ws = new WebSocket('${notifier}');
+ws.onmessage = function(event) {
+    try {
+    	plotFrame = document.getElementById('plotFrame').contentWindow;
+    	if (plotFrame.document.getElementsByTagName('img').length >= 1) {
+    		plotFrame.location.reload(true);
+    	}
+    } catch (e) {
+    }
+}
+</script>
 <body>
-    <iframe src="tree_page.jsp" name="treeFrame" height="100%" width="30%"></iframe>
-    <iframe src="plot_page.jsp" name="plotFrame" height="100%" width="68%"></iframe>
+    <iframe id="treeFrame" src="tree_page.jsp" name="treeFrame" height="100%" width="30%"></iframe>
+    <iframe id="plotFrame" src="plot_page.jsp" name="plotFrame" height="100%" width="68%"></iframe>
 </body>
 </html>
