@@ -3,6 +3,7 @@
 
 <html>
 <head>
+<title>HPS Online Reconstruction</title>
 </head>
 <script>
 ws = new WebSocket('${notifier}');
