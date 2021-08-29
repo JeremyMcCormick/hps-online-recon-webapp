@@ -20,7 +20,7 @@
     </c:if>
 
     <!-- Do plotting only if path is non-empty -->
-    <c:if test="${!empty param.plotHref || !empty aidaPath}">
+    <c:if test="${not empty param.plotHref || not empty aidaPath}">
 
         <!--
             Get remote AIDA tree
@@ -33,21 +33,16 @@
         <c:set var="ref" value="plot_page.jsp?plotHref=${aidaPath}" />
 
         <!-- Get data from the AIDA Tree and put into "aidaObjects" variable -->
-        <aida:objects storeName="${storeName}" path="${aidaPath}" var="aidaObjects">
-        </aida:objects>
+        <aida:objects storeName="${storeName}" path="${aidaPath}" var="aidaObjects"/>
 
+        <c:set value="${fn:length(aidaObjects) == 1}" var="isSingle"/>
+        <c:set value="${fn:length(aidaObjects) > 1}" var="isMultiple" />
         <c:set value="${fn:contains(aidaObjects[0], 'Histogram2D')}" var="isHistogram2D"/>
         <c:set value="${fn:contains(aidaObjects[0], 'DataPointSet')}" var="isDataPointSet"/>
 
-        <!--
-        <h3>
-            <b>Path:</b> ${aidaPath}<br/>
-        </h3>
-         -->
-
         <!-- Create clickable Image Map for multiple data only (optional) -->
         <c:set var="imgMap" value="false" />
-        <c:if test="${!empty aidaObjects && fn:length(aidaObjects) > 1}">
+        <c:if test="${!empty aidaObjects && isMultiple eq true}">
             <c:set var="imgMap" value="true" />
         </c:if>
 
@@ -74,7 +69,7 @@
                     <aida:attribute name="scale" value="log"/>
                 </aida:style>
                 <aida:style type="statisticsBox">
-                    <aida:attribute name="isVisible" value="${!isHistogram2D && fn:length(aidaObjects) == 1}"/>
+                    <aida:attribute name="isVisible" value="${not isHistogram2D && isSingle eq true}"/>
                 </aida:style>
                 <aida:style type="legendBox">
                     <aida:attribute name="isVisible" value="false"/>
@@ -96,39 +91,47 @@
                         <aida:attribute name="size" value="1"/>
                         <aida:attribute name="color" value="blue"/>
                     </aida:style>
-                    <c:if test="${isDataPointSet == true}">
-                        <aida:style type="outline">
-                            <aida:attribute name="color" value="black"/>
-                            <aida:attribute name="visible" value="true"/>
-                            <aida:attribute name="lineType" value="solid"/>
-                            <aida:attribute name="thickness" value="1"/>
-                        </aida:style>
-                        <aida:style type="marker">
-                            <aida:attribute name="color" value="blue"/>
-                            <aida:attribute name="size" value="5"/>
-                            <aida:attribute name="shape" value="diamond"/>
-                        </aida:style>
-                        <aida:style type="errorBar">
-                            <aida:attribute name="visible" value="false"/>
-                        </aida:style>
-                    </c:if>
                 </aida:style>
-                <c:if test="${fn:length(aidaObjects) == 1}">
+                <c:if test="${isSingle eq true}">
                     <aida:style type="title">
                         <aida:style type="text">
                             <aida:attribute name="fontSize" value="20"/>
                         </aida:style>
                     </aida:style>
                 </c:if>
-
             </aida:style>
 
-            <aida:region href="${ref}/${aida:objectName(aidaObjects[status.index])}">
-                <aida:plot var="${aidaObjects[status.index]}">
-                </aida:plot>
-            </aida:region>
-
-        </aida:plotset>
+			<aida:region href="${ref}/${aida:objectName(aidaObjects[status.index])}">
+				<aida:plot var="${aidaObjects[status.index]}">
+					<aida:style type="plotter">
+					    <aida:style type="yAxis">
+					        <aida:attribute name="allowZeroSuppression" value="false"/>
+					    </aida:style>
+				        <c:if test="${isDataPointSet eq true}">
+						    <aida:style type="data">
+								<aida:style type="marker">
+									<aida:attribute name="color" value="blue" />
+									<aida:attribute name="size" value="5" />
+									<aida:attribute name="shape" value="diamond" />
+								</aida:style>
+								<aida:style type="errorBar">
+									<aida:attribute name="isVisible" value="false" />
+								</aida:style>
+								<aida:style type="outline">
+                                    <aida:attribute name="isVisible" value="true" />
+									<aida:attribute name="color" value="black" />
+									<aida:attribute name="lineType" value="solid" />
+									<aida:attribute name="thickness" value="1" />
+								</aida:style>
+						    </aida:style>
+                            <aida:style type="xAxis">
+                                <aida:attribute name="type" value="date"/>
+                            </aida:style>
+					    </c:if>
+					</aida:style>
+				</aida:plot>
+			</aida:region>
+		</aida:plotset>
     </c:if>
 
 </body>
