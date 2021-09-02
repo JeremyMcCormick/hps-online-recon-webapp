@@ -101,37 +101,37 @@
                 </c:if>
             </aida:style>
 
-			<aida:region href="${ref}/${aida:objectName(aidaObjects[status.index])}">
-				<aida:plot var="${aidaObjects[status.index]}">
-					<aida:style type="plotter">
-					    <aida:style type="yAxis">
-					        <aida:attribute name="allowZeroSuppression" value="false"/>
-					    </aida:style>
-				        <c:if test="${isDataPointSet eq true}">
-						    <aida:style type="data">
-								<aida:style type="marker">
-									<aida:attribute name="color" value="blue" />
-									<aida:attribute name="size" value="5" />
-									<aida:attribute name="shape" value="diamond" />
-								</aida:style>
-								<aida:style type="errorBar">
-									<aida:attribute name="isVisible" value="false" />
-								</aida:style>
-								<aida:style type="outline">
+            <aida:region href="${ref}/${aida:objectName(aidaObjects[status.index])}">
+                <aida:plot var="${aidaObjects[status.index]}">
+                    <aida:style type="plotter">
+                        <aida:style type="yAxis">
+                            <aida:attribute name="allowZeroSuppression" value="false"/>
+                        </aida:style>
+                        <c:if test="${isDataPointSet eq true}">
+                            <aida:style type="data">
+                                <aida:style type="marker">
+                                    <aida:attribute name="color" value="blue" />
+                                    <aida:attribute name="size" value="5" />
+                                    <aida:attribute name="shape" value="diamond" />
+                                </aida:style>
+                                <aida:style type="errorBar">
+                                    <aida:attribute name="isVisible" value="false" />
+                                </aida:style>
+                                <aida:style type="outline">
                                     <aida:attribute name="isVisible" value="true" />
-									<aida:attribute name="color" value="black" />
-									<aida:attribute name="lineType" value="solid" />
-									<aida:attribute name="thickness" value="1" />
-								</aida:style>
-						    </aida:style>
+                                    <aida:attribute name="color" value="black" />
+                                    <aida:attribute name="lineType" value="solid" />
+                                    <aida:attribute name="thickness" value="1" />
+                                </aida:style>
+                            </aida:style>
                             <aida:style type="xAxis">
                                 <aida:attribute name="type" value="date"/>
                             </aida:style>
-					    </c:if>
-					</aida:style>
-				</aida:plot>
-			</aida:region>
-		</aida:plotset>
+                        </c:if>
+                    </aida:style>
+                </aida:plot>
+            </aida:region>
+        </aida:plotset>
     </c:if>
 
 </body>

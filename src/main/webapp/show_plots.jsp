@@ -9,12 +9,12 @@
 ws = new WebSocket('${notifier}');
 ws.onmessage = function(event) {
     try {
-    	plotFrame = document.getElementById('plotFrame').contentWindow;
-    	if (plotFrame.document.getElementsByTagName('img').length >= 1) {
-    		console.log(event.data);
-    		console.log(plotFrame.location.href);
-    		plotFrame.location.reload(true);
-    	}
+        plotFrame = document.getElementById('plotFrame').contentWindow;
+        if (plotFrame.document.getElementsByTagName('img').length >= 1) {
+            console.log(event.data);
+            console.log(plotFrame.location.href);
+            plotFrame.location.reload(true);
+        }
     } catch (e) {
     }
 }
