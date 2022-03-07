@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.hps</groupId>
-    <artifactId>remote-aida-web</artifactId>
+    <artifactId>hps-online-recon-web</artifactId>
     <name>Remote AIDA Web</name>
     <description>Remote AIDA Web Application</description>
     <packaging>war</packaging>
